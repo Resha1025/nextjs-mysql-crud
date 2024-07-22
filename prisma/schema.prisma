@@ -8,15 +8,35 @@ datasource db {
 }
 
 model customers {
-  id            Int       @id @default(autoincrement())
-  first_name    String    @db.VarChar(255)
-  last_name     String    @db.VarChar(255)
-  full_name     String?   @db.VarChar(255)
-  mobile_number String    @unique(map: "mobile_number") @db.Char(10)
-  city          String?   @db.VarChar(255)
-  date_created  DateTime? @default(now()) @db.Timestamp(0)
-  created_by    String?   @db.VarChar(255)
-  time_stamp    DateTime? @default(now()) @db.Timestamp(0)
-  user_id       Int?
-  is_active     Boolean?  @default(true)
+  id Int @id @default(autoincrement())
+  first_name String
+  last_name String
+  full_name String @default("")
+  mobile_number String @unique
+  city String
+  date_created DateTime @default(now())
+  created_by String
+  time_stamp DateTime @updatedAt
+  user_id Int
+  is_active Boolean @default(true)
+
+  @@unique([full_name, mobile_number])
+  
+  @@index([full_name], name: "customer_full_name_idx")
+
+  @@map("customers")
+}
+
+model skus {
+  id Int @id @default(autoincrement())
+  name String @unique
+  code String @unique
+  unit_price Float
+  date_created DateTime @default(now())
+  created_by String
+  time_stamp DateTime @updatedAt
+  user_id Int
+  is_active Boolean @default(true)
+
+  @@unique([name, code])
 }

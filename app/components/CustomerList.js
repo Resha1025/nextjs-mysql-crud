@@ -118,7 +118,7 @@ export default function CustomerList() {
                         <th>Mobile Number</th>
                         <th>City</th>
                         <th>Active</th>
-                        <th>Edit</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

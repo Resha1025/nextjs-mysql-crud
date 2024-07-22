@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CustomerPage from "./components/CustomerPage";
 import Sidebar from "./components/Sidebar";
+import CustomerPage from "./components/CustomerPage";
+import SKUPage from "./components/SKUPage";
 
 export default function Home() {
     const [hash, setHash] = useState("");
@@ -18,6 +19,8 @@ export default function Home() {
         switch (hash) {
             case "#customers":
                 return <CustomerPage />;
+            case "#skus":
+                return <SKUPage />;
             case "#reports":
                 return <p>Reports content goes here.</p>;
             default:
